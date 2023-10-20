@@ -1,0 +1,45 @@
+main{
+    background-color: gray;
+    display: flex;
+    justify-content: start;
+    width: 750px;
+    margin:15px auto;
+    box-shadow: 0px 1px 7px black;
+}
+
+.orders{
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.order{
+    margin-bottom: 20px;
+}
+
+.order-header{
+    display: flex;
+    justify-content: space-between;
+    color: aliceblue;
+}
+
+table{
+    width: 100%;
+    text-align: end;
+    border:1px solid #501b1b;
+}
+
+h3{
+    color: aliceblue;
+}
+
+th,tr{
+    width: 100%;
+}
+
+h5{
+    border: 1px solid #501b1b;
+    text-align: end;
+    font-size: 20px;
+    margin-right: 5px;
+}

@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+<%- include('../includes/navigation.ejs') %>
+<% if(products.length>0) {%>
+<main>
+    <div class="cart">
+        <ul>
+            <% products.forEach(prod=>{ let p=prod.cartItem.qty%>
+                <ul>
+                    <li class="cart-item-title"><%=prod.title%></li>
+                    <li id="qty-<%prod.id%>">
+                        <p name="qty"><%=p%></p>
+                        <button onclick="changeQty(this)" name="s" class="change-cart">-</button>
+                        <button onclick="changeQty(this)" name="a" class="change-cart">+</button>
+                    </li>
+                    <form action="/cart-delete-item/<%=prod.id%>" method="post">
+                        <button class="del-cart" type="submit">X</button>
+                    </form>
+                </ul>
+                <hr color="#501b1b">
+            <%}) %>
+        </ul>
+        <form action="/create-order" method="POST">
+            <button class="order-btn" type="submit">Order now</button>
+        </form>
+    </div>
+<%} else {%>
+    <h1>No products in cart</h1>
+<%}%>
+</main>
+<script>
+    function changeQty(obj){
+       let val=parseInt(obj.parentElement.children[0].innerText)
+        if(obj.name=='a')
+            obj.parentElement.children[0].innerText=val+1
+        else
+            if(val>1)
+            obj.parentElement.children[0].innerText=val-1
+    }
+</script>
+
+<%- include('../includes/end.ejs') %>

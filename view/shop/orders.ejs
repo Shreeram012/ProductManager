@@ -1,0 +1,40 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/orders.css">
+</head>
+<body>
+<%- include('../includes/navigation.ejs') %>
+    <main><% if(orders.length>0) {%>
+            <div class="orders">
+                <%orders.forEach(order=>{
+                    let total=0%>
+                <div class="order">
+                    <div class="order-header">
+                        <h3>Order ID: #<%=order.id%></h3>
+                        <h4>Date-time: <%=order.createdAt.toString().substring(0,25)%></h4>
+                    </div>
+                <hr color="501b1b">
+                <table class="order-<%=order.id%>" cellspacing="20px" cellborder="1">
+                    <thead>
+                        <th>product</th>
+                        <th>qty.</th>
+                        <th>price(Rs.)</th>
+                    </thead>
+                    <%order.products.forEach(product=>{%>
+                        <tr>
+                            <td><%=product.title%></td>
+                            <td><%=product.orderItem.qty%></td>
+                            <%let subtot=product.price*product.orderItem.qty%>
+                            <td><%=subtot%></td>
+                            <%total+=subtot%>
+                        </tr>
+                    <%})%>
+                </table>
+                <h5>Total: Rs.<%=total%></h5>
+                </div>
+                <%}) %>
+            </div>
+        <%} else { %>
+            <h1>Nothing there!</h1>
+        <%}%>
+    </main>
+<%- include('../includes/end.ejs') %>
