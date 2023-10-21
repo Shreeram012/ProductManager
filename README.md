@@ -1,6 +1,7 @@
 ﻿# ProductManager
   # Installation 
   npm init <br>
+  npm install <br>
   npm start
   
   # Changes
