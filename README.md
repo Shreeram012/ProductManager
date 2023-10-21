@@ -1,7 +1,7 @@
 ﻿# ProductManager
-  #Installation 
+  # Installation 
   npm init
   npm start
   
-  #Changes
+  # Changes
   username and password in /util/database.js
